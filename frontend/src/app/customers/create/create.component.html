@@ -1,85 +1,152 @@
 <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
 
-  <section>
 
-  <div class="col-md-2" >
-    <label for="name" class="form-label">Nome</label>
-    <input [ngClass]="validatorFields('name')" type="text" class="form-control" id="name" formControlName="name">
-  </div>
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#" (click)="showCampo2()">Dados Cadastrais</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="showCampo()">| Endereço de entrega |</a>
+    </li>
+  </ul>
 
-  <div class="col-md-2">
-    <label for="lastName" class="form-label">Sobrenome</label>
-    <input [ngClass]="validatorFields('lastName')" type="text" class="form-control" id="lastName" formControlName="lastName">
-  </div>
-
-  </section>
-
-
-
-  <div class="col-md-4">
-    <label for="email" class="form-label">Email</label>
-    <input [ngClass]="validatorFields('email')" placeholder="julia_solza@gmail.com" type="text" class="form-control" id="email" formControlName="email">
-  </div>
-
-  <div class="col-md-4">
-    <label for="cpf" class="form-label">CPF</label>
-    <input [ngClass]="validatorFields('cpf')" placeholder="00000000000" type="text" class="form-control" id="cpf" formControlName="cpf">
-  </div>
-
-  <div class="col-md-4">
-    <label for="rg" class="form-label">RG</label>
-    <input [ngClass]="validatorFields('rg')" placeholder="00000000" type="text" class="form-control" id="rg" formControlName="rg">
-  </div>
-
-  <div class="endereco" formGroupName="endereco">
-
-
+  <div *ngIf="visibleB">
+    <h1>Dados Cadastrais</h1>
     <section>
 
-       <div class="col-md-1">
-      <label for="cep" class="form-label">Cep</label>
-      <input  [ngClass]="validatorFields('endereco.cep')" placeholder="00000-000" type="text" class="form-control" id="cep" formControlName="cep" (blur)="consultaCEP()">
+      <div class="col-md-2">
+        <label for="name" class="form-label">Nome</label>
+        <input [ngClass]="validatorFields('name')" type="text" class="form-control" id="name" formControlName="name">
+      </div>
+
+      <div class="col-md-2">
+        <label for="lastName" class="form-label">Sobrenome</label>
+        <input [ngClass]="validatorFields('lastName')" type="text" class="form-control" id="lastName"
+          formControlName="lastName">
+      </div>
+
+    </section>
+
+    <div class="col-md-4">
+      <label for="email" class="form-label">Email</label>
+      <input [ngClass]="validatorFields('email')" placeholder="julia_solza@gmail.com" type="text" class="form-control"
+        id="email" formControlName="email">
     </div>
 
-    <div class="col-md-3">
-      <label for="estado" class="form-label">Estado</label>
+    <div class="col-md-4">
+      <label for="email" class="form-label">Sexo</label>
 
-      <select name="" id="" [ngClass]="validatorFields('endereco.estado')"  class="form-control" id="estado" formControlName="estado">
-        <option *ngFor="let item of estados | async" [value]="item.sigla"> {{item.nome}}</option>
+      <select place class="form-control" [ngClass]="validatorFields('sexo')" formControlName="sexo">
+        <option [value]="'Feminino'">Feminino</option>
+        <option [value]="'Masculino'">Masculino</option>
       </select>
+
+
     </div>
 
-    </section>
-
-    <section>
-  <div class="col-md-1">
-      <label for="cidade" class="form-label">Cidade</label>
-      <input [ngClass]="validatorFields('endereco.cidade')"  type="text" class="form-control" id="cidade" formControlName="cidade">
+    <div class="col-md-4">
+      <label for="cpf" class="form-label">CPF</label>
+      <input [ngClass]="validatorFields('cpf')" placeholder="00000000000" type="text" class="form-control" id="cpf"
+        formControlName="cpf">
     </div>
 
-    <div class="col-md-3">
-      <label for="bairro" class="form-label">Bairro</label>
-      <input [ngClass]="validatorFields('endereco.bairro')"  type="text" class="form-control" id="bairro" formControlName="bairro">
+    <div class="col-md-4">
+      <label for="rg" class="form-label">RG</label>
+      <input [ngClass]="validatorFields('rg')" placeholder="00000000" type="text" class="form-control" id="rg"
+        formControlName="rg">
     </div>
 
-    </section>
 
-    <section>
-
-    <div class="col-md-1">
-      <label for="numero" class="form-label">Número</label>
-      <input [ngClass]="validatorFields('endereco.numero')"  type="text" class="form-control" id="numero" formControlName="numero">
+    <div class="col-md-4">
+      <label for="telefone" class="form-label">Telefone</label>
+      <input [ngClass]="validatorFields('telefone')" type="text" class="form-control" id="telefone"
+        formControlName="telefone">
     </div>
 
-    <div class="col-md-3">
-      <label for="rua" class="form-label">Rua</label>
-      <input [ngClass]="validatorFields('endereco.rua')"  type="text" class="form-control" id="rua" formControlName="rua">
+    <div class="col-md-4">
+      <label for="celular" class="form-label">Celular</label>
+      <input [ngClass]="validatorFields('celular')" type="text" class="form-control" id="celular"
+        formControlName="celular">
     </div>
 
-    </section>
+    <div class="col-md-4">
+      <label for="nascimento" class="form-label">Nascimento</label>
+      <input [ngClass]="validatorFields('nascimento')" type="date" class="form-control" id="nascimento"
+        formControlName="nascimento">
+    </div>
 
   </div>
 
-  <button type="submit" class="btn btn-primary col-md-4">Submit</button>
+
+  <div *ngIf="visibleA">
+
+    <div class="endereco" formGroupName="endereco">
+
+      <h1>Endereço de entrega</h1>
+
+      <section>
+
+        <div class="col-md-1">
+          <label for="cep" class="form-label">Cep</label>
+          <input [ngClass]="validatorFields('endereco.cep')" placeholder="00000-000" type="text" class="form-control"
+            id="cep" formControlName="cep" (blur)="consultaCEP()">
+        </div>
+
+        <div class="col-md-3">
+          <label for="estado" class="form-label">Estado</label>
+
+          <select name="" id="" [ngClass]="validatorFields('endereco.estado')" class="form-control" id="estado"
+            formControlName="estado">
+            <option *ngFor="let item of estados | async" [value]="item.sigla"> {{item.nome}}</option>
+          </select>
+        </div>
+
+      </section>
+
+      <section>
+        <div class="col-md-1">
+          <label for="cidade" class="form-label">Cidade</label>
+          <input [ngClass]="validatorFields('endereco.cidade')" type="text" class="form-control" id="cidade"
+            formControlName="cidade">
+        </div>
+
+        <div class="col-md-3">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input [ngClass]="validatorFields('endereco.bairro')" type="text" class="form-control" id="bairro"
+            formControlName="bairro">
+        </div>
+
+      </section>
+
+      <section>
+
+        <div class="col-md-1">
+          <label for="numero" class="form-label">Número</label>
+          <input [ngClass]="validatorFields('endereco.numero')" type="text" class="form-control" id="numero"
+            formControlName="numero">
+        </div>
+
+        <div class="col-md-3">
+          <label for="rua" class="form-label">Rua</label>
+          <input [ngClass]="validatorFields('endereco.rua')" type="text" class="form-control" id="rua"
+            formControlName="rua">
+        </div>
+
+      </section>
+
+    </div>
+
+
+  </div>
+
+  <div class="bottons">
+    <button type="button" style="display: block;" class="btn btn-primary col-md-1"
+      (click)="showCampo2()">Anterior</button>
+    <button type="button" style="display: block;" class="btn btn-primary col-md-1"
+      (click)="showCampo()">Próximo</button>
+    <button type="submit" class="btn btn-primary col-md-1">Enviar</button>
+
+  </div>
+
 
 </form>

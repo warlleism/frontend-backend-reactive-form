@@ -1,5 +1,44 @@
 {
   "customers": [
-   
+    {
+      "name": "Warllei",
+      "lastName": "Martins",
+      "sexo": "Feminino",
+      "email": "warllei.s.martins@hotmail.com",
+      "cpf": "13882656727",
+      "telefone": "27995804151",
+      "celular": "27995804151",
+      "rg": "12312312312",
+      "nascimento": "1996-04-03",
+      "endereco": {
+        "cep": "29124-395",
+        "estado": "ES",
+        "cidade": "Vila Velha",
+        "bairro": "Barramares",
+        "rua": "Avenida São Pedro",
+        "numero": "671"
+      },
+      "id": 1
+    },
+    {
+      "name": "Warllei",
+      "lastName": "Martins",
+      "sexo": "Feminino",
+      "email": "warllei.s.martins@hotmail.com",
+      "cpf": "13882656727",
+      "telefone": "27995804151",
+      "celular": "27995804151",
+      "rg": "12312312312",
+      "nascimento": "1996-04-03",
+      "endereco": {
+        "cep": "29124-395",
+        "estado": "ES",
+        "cidade": "Vila Velha",
+        "bairro": "Barramares",
+        "rua": "Avenida São Pedro",
+        "numero": "671"
+      },
+      "id": 2
+    }
   ]
 }

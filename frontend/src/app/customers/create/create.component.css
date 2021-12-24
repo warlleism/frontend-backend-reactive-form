@@ -2,6 +2,27 @@ form{
   margin-top: 50px;
   padding: 50px;
   font-family: Helvetica, Sans-Serif;
+
+}
+
+.nav{
+  width: 40%;
+}
+
+.nav li{
+margin: 0;
+padding: 0;
+}
+
+.nav li a{
+  font-size: 1.3rem;
+  margin-right: 10px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.763);
+  padding: 0;
+}
+.nav li a:hover{
+  border-bottom: rgb(108, 105, 171) 2px solid ;
 }
 
 
@@ -17,12 +38,24 @@ label{
   margin-top: 10px;
 }
 
+.bottons{
+  display: flex;
+}
+
 button{
+  width: 9%;
+  padding: 10px;
   margin-top: 20px;
+  margin-right: 40px;
+  margin-left: 11px;
 }
 
 .col-md-4{
   width: 34%;
+}
+
+h1{
+  margin: 50px 0px 30px 0px;
 }
 
 

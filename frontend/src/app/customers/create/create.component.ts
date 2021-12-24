@@ -13,23 +13,37 @@ export class CreateComponent implements OnInit {
 
   estados: Observable<any>;
 
+  visibleA: boolean = false
+
+  visibleB: boolean = true
+
   constructor(
     private formBuilder: FormBuilder,
     private createService: RequestsService
   ) {}
+
+  showCampo(){
+    return this.visibleA = true, this.visibleB = false
+  }
+  showCampo2(){
+    return this.visibleB = true, this.visibleA = false
+  }
 
   ngOnInit() {
 
     this.estados = this.createService.getEstados()
 
 
-
     this.formulario = this.formBuilder.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
+      sexo: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       cpf: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+      telefone: [null, Validators.required],
+      celular: [null, Validators.required],
       rg: [null, Validators.required],
+      nascimento: [null, Validators.required],
 
       endereco: this.formBuilder.group({
         cep: [null, Validators.required],
@@ -47,7 +61,7 @@ export class CreateComponent implements OnInit {
       this.createService.create(this.formulario.value).subscribe();
       alert('Cadastro feito com sucesso');
     } else {
-      alert('Faltam Campos');
+      alert('Campos Incompletos');
       this.validAllFields(this.formulario);
     }
   }
