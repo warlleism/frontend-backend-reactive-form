@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
@@ -11,35 +11,42 @@ import { RequestsService } from 'src/app/services/requests.service';
 export class CreateComponent implements OnInit {
   formulario: FormGroup;
 
+  formClean: Subscription;
+
   estados: Observable<any>;
 
-  visibleA: boolean = false
+  showItensA: boolean = true;
 
-  visibleB: boolean = true
+  showItensB: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private createService: RequestsService
   ) {}
 
-  showCampo(){
-    return this.visibleA = true, this.visibleB = false
+  showCampo() {
+    return (this.showItensA = false), (this.showItensB = true);
   }
-  showCampo2(){
-    return this.visibleB = true, this.visibleA = false
+  showCampo2() {
+    return (this.showItensA = true), (this.showItensB = false);
   }
 
   ngOnInit() {
-
-    this.estados = this.createService.getEstados()
-
+    this.estados = this.createService.getEstados();
 
     this.formulario = this.formBuilder.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
       sexo: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      cpf: [null, [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
+      cpf: [
+        null,
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
+        ],
+      ],
       telefone: [null, Validators.required],
       celular: [null, Validators.required],
       rg: [null, Validators.required],
@@ -58,12 +65,18 @@ export class CreateComponent implements OnInit {
 
   onSubmit() {
     if (this.formulario.valid) {
-      this.createService.create(this.formulario.value).subscribe();
+      this.formClean = this.createService
+        .create(this.formulario.value)
+        .subscribe();
       alert('Cadastro feito com sucesso');
     } else {
       alert('Campos Incompletos');
       this.validAllFields(this.formulario);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.formClean.unsubscribe;
   }
 
   validatorTouched(field: any) {
@@ -79,12 +92,9 @@ export class CreateComponent implements OnInit {
   }
 
   validAllFields(formGroup: FormGroup) {
-
     Object.keys(formGroup.controls).forEach((campo) => {
-
       const controle = formGroup.get(campo);
       controle.markAllAsTouched();
-
     });
   }
 
@@ -104,7 +114,7 @@ export class CreateComponent implements OnInit {
         rua: dados.logradouro,
         bairro: dados.bairro,
         cidade: dados.localidade,
-        estado: dados.uf
+        estado: dados.uf,
       },
     });
   }

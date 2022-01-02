@@ -5,14 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateComponent } from './customers/create/create.component';
-import { DeleteComponent } from './customers/delete/delete.component';
-import { ReadComponent } from './customers/read/read.component';
-import { UpdateComponent } from './customers/update/update.component';
 import { RequestsService } from './services/requests.service';
 
 
 @NgModule({
-  declarations: [AppComponent, CreateComponent,ReadComponent,UpdateComponent,DeleteComponent],
+  declarations: [AppComponent, CreateComponent],
   imports: [BrowserModule, AppRoutingModule,FormsModule,HttpClientModule,ReactiveFormsModule],
   providers: [RequestsService],
   bootstrap: [AppComponent],
