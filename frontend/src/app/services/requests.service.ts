@@ -1,18 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequestsService {
 
-  url = 'http://localhost:3001/customers'
+  private readonly API = `${environment.API}customers`
 
   constructor(private http: HttpClient) { }
 
   create(customer: any): Observable<any>{
-    return this.http.post(this.url, customer)
+    return this.http.post(this.API, customer)
   }
 
   Pesquisacep(valor: any) {
