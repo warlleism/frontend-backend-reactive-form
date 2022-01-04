@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { RequestsService } from 'src/app/services/requests.service';
@@ -8,12 +8,12 @@ import { RequestsService } from 'src/app/services/requests.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnDestroy {
   formulario: FormGroup;
 
   formClean: Subscription;
 
-  estados: Observable<any>;
+  estados: Observable<any[]>;
 
   showItensA: boolean = true;
 

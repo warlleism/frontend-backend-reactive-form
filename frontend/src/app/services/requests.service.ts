@@ -33,7 +33,7 @@ export class RequestsService {
 
     }
 
-    getEstados():Observable<any>{
-      return this.http.get<any>('assets/estados/estados.json')
+    getEstados():Observable<any[]>{
+      return this.http.get<any[]>('assets/estados/estados.json')
     }
 }
